@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  
     <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -19,37 +20,46 @@
     <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bugzilla
-            <li class="nav-item">
-              <a class="nav-link" href="#">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Stakeholders</a>
-            </li>
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <span>Welcome
-                  <%= current_user.roles.pluck(:name).join(", ").capitalize %>
-                </span>
-              </li>
-              <li class="nav-item">
-                <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                <%= button_to "Sign In", new_user_session_path, method: :get %> 
-                </a>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+  <% if user_signed_in? %>
+  <%= link_to "BugZilla", dashboard_path, :class =>"navbar-brand" %>
+  <% else %>
+  <%= link_to "BugZilla", root_path, :class =>"navbar-brand" %>
+  <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+              <%= link_to "Projects", projects_path,  :class =>"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        
+      </ul>
+    </div>
+    <div class="text-end d-flex flex-wrap align-items-center justify-content-center" >
+    <% if user_signed_in? %>
+      <%= link_to "New Project", new_project_path, :class => "me-2 btn btn-outline-warning" %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete, :class=>"btn btn-outline-danger" %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path, :class=>"btn btn-outline-danger" %> 
+      <%= link_to "Register", new_user_registration_path, :class => "me-2 btn btn-outline-warning" %>
+    <% end%>
 
+    </div>
+  </div>
+</nav>
+   
       <%= yield %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
   </body>
+
 </html>
