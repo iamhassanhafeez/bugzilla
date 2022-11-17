@@ -1,0 +1,8 @@
+<h1>Title: <%= @project.title %></h1>
+<br/>
+<% if @project.image.attached?  %>
+    <img width="500px" src="<%= (url_for(@project.image)) %>" />
+<% end %>
+<br/>
+<p><%= @project.description %></p>
+<span><%= @project.status %></span>

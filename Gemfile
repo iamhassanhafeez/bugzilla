@@ -66,6 +66,9 @@ group :development do
 end
 
 gem 'devise'
+gem "haml-rails", "~> 2.0"
+gem "rolify"
+
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
