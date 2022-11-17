@@ -1,7 +1,8 @@
 <div class="container">
 <main>
 <div class="text-center py-5">
-<h1> Welcome to the projects </h1>
+<h1> Welcome to the bugs </h1>
+<%= link_to "New Bug", new_project_bug_path %>
 <table class="table table-striped">
 <thead class="thead-dark">
 <tr>
@@ -14,16 +15,14 @@
 </tr>
 </thead>
 <tbody>
-<% @projects.each_with_index do |project, index| %>
+<% @bugs.each_with_index do |bug, index| %>
 <tr>
 <th scope="row"><%= index+1 %></th>
-<td><%= project.title %></td>
-<td><%= project.description %></td>
-<td><%= project.status %></td>
+<td><%= bug.title %></td>
+<td><%= bug.description %></td>
+<td><%= bug.status %></td>
 <td>
-<%= link_to "Edit", edit_project_path(project) %>
-<%= link_to "Bugs", project_bugs_path(project) %>
-
+ <%= link_to "Edit", edit_project_bug_path(@project.id, bug) %>
 </td>
 
 </tr>

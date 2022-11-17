@@ -1,0 +1,18 @@
+<div style="width:60%;">
+<%= form_with(model: [project, bug]) do |form| %>
+    <div class="row g-3">
+    <%= form.label :name, "Project Title:", :class=>"form-label" %>
+    <%= form.text_field :title, :class=>"form-control" %>
+<br/>
+    <%= form.label "Project Description", :class=>"form-label" %>
+    <%= form.text_area :description, :class=>"form-control" %>
+    <br/>
+
+    <%= form.label "Status" %>
+    <%= form.select :status, [["Created","created"],["Assigned","assigned"], ["Resolved","resolved"]],  {promt: "Select Status"}, {class:"form-select"} %>
+    <br/>
+
+    <%= form.submit "Add", :class=>"form-control btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>
