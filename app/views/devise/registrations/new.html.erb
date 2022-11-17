@@ -15,7 +15,7 @@ align-items: center;">
       <%= f.label :password, :class=>"form-label" %>
       <% if @minimum_password_length %>
         <em>
-          (#{@minimum_password_length} characters minimum)
+          (<%= @minimum_password_length %> characters minimum)
         </em>
       <% end %>
       <br/>
