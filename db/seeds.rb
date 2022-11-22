@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+roles = [
+    { name: "Manager"   },
+    { name: "Developer"},
+    { name: "QA"}
+
+]
+
+Role.bulk_insert(values: roles) if Role.all.count.zero?

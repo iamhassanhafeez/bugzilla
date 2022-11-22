@@ -8,16 +8,15 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <%= javascript_importmap_tags %>
-
   </head>
 
   <body>
   <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
   <% if user_signed_in? %>
-  <%= link_to "BugZilla", dashboard_path, :class =>"navbar-brand" %>
+  <%= link_to "BugZilla", dashboard_path, :class =>"navbar-brand text-emerald-500	" %>
   <% else %>
-  <%= link_to "BugZilla", root_path, :class =>"navbar-brand" %>
+  <%= link_to "BugZilla", root_path, :class =>"navbar-brand text-emerald-500" %>
   <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,7 +37,8 @@
     </div>
     <div class="text-end d-flex flex-wrap align-items-center justify-content-center" style="gap:10px;" >
     <% if user_signed_in? %>
-      <%= link_to "New Project", new_project_path, :class => "me-2 btn btn-outline-warning" %>
+    <p class="text text-info">You are logged in as '<%= current_user.roles.first.name.capitalize %>'</p>
+    <%= link_to "New Project", new_project_path, :class => "me-2 btn btn-outline-warning" %>
       <%= button_to "Sign Out", destroy_user_session_path, method: :delete, :class=>"btn btn-outline-danger" %>
     <% else %>
       <%= link_to "Sign In", new_user_session_path, :class=>"btn btn-outline-danger" %> 
